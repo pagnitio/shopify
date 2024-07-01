@@ -1,0 +1,79 @@
+
+<!-- /templates/customers/login.liquid -->
+{% comment%}
+<h2>Login</h2>
+{% form 'customer_login' %}
+
+{{ form.errors | default_errors }}
+
+<label for="customer_email">Email Address</label>
+<input type="email" name="customer[email]" />
+
+<label for="customer_password">Password</label>
+<input type="password" name="customer[password]" />
+
+<input type="submit" value="Sign In" />
+
+{% endform %}
+
+<h2>Forgot Password</h2>
+{% form 'recover_customer_password' %}
+
+{{ form.errors | default_errors }}
+
+<label for="customer_email">Email Address</label>
+<input type="email" name="email" />
+
+<input type="submit" value="Submit" />
+
+{% endform %}
+{% endcomment%}
+
+<section class="ftco-section">
+    <div class="container">
+        
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <div class="wrap" style="
+                border: 1px solid #D19C97;">
+                    
+                    <div class="login-wrap p-4 p-md-5">
+                  <div class="d-flex">
+                      <div class="w-100">
+                          <h3 class="mb-4">{{customer.register.title}}</h3>
+                      </div>
+                           
+                  </div>
+                  {% form 'create_customer' %}
+                  {{ form.errors | default_errors }}
+                      <div class="form-group mt-3">
+                          <input type="text" class="form-control" name="customer[first_name]" required>
+                          <label class="form-control-placeholder" for="firstname">First Name</label>
+                      </div>
+                      <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="customer[last_name]" required>
+                        <label class="form-control-placeholder" for="lastname">Last Name</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control" name="customer[email]" required>
+                        <label class="form-control-placeholder" for="lastname">Email</label>
+                    </div>
+                    
+                <div class="form-group">
+                  <input  type="password" name="customer[password]"  class="form-control" required>
+                  <label class="form-control-placeholder" for="password">Password</label>
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+      
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-primary rounded submit px-3" value="submit">
+                </div>
+              
+              {% endform %}
+              <p class="text-center">Already have an account ? <a  href="/account/login">Sign In</a></p>
+            </div>
+          </div>
+            </div>
+        </div>
+    </div>
+</section>

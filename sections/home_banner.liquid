@@ -1,0 +1,73 @@
+    <!-- Offer Start -->
+    <div class="container-fluid offer pt-5">
+        <div class="row px-xl-5">
+            <div class="col-md-6 pb-4">
+                <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                    <img src="{{ section.settings.left_image | image_url: width: 2048 }}" alt="">
+                    <div class="position-relative" style="z-index: 1;">
+                        <h5 class="text-uppercase text-primary mb-3">{{ section.settings.left_title }}</h5>
+                        <h1 class="mb-4 font-weight-semi-bold">{{ section.settings.left_title2 }}</h1>
+                        <a href="https://bigshoptrial.myshopify.com/collections/all" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pb-4">
+                <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                    <img src="{{ section.settings.right_image | image_url: width: 2048 }}" alt="">
+                    <div class="position-relative" style="z-index: 1;">
+                        <h5 class="text-uppercase text-primary mb-3">{{ section.settings.right_title }}</h5>
+                        <h1 class="mb-4 font-weight-semi-bold">{{ section.settings.right_title2 }}</h1>
+                        <a href="https://bigshoptrial.myshopify.com/collections/all" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Offer End -->
+
+    {% schema %}
+
+    {
+        "name":"baner section",
+        "settings":[
+        {
+            "type": "text",
+            "id":"left_title",
+            "label":"Left title"
+           
+         },
+         {
+           "type": "text",
+           "id":"left_title2",
+           "label":"Left Title2"
+          
+        },
+        {
+         "type": "image_picker",
+         "id":"left_image",
+         "label":"Left image"
+        
+      },
+      {
+        "type": "text",
+        "id":"right_title",
+        "label":"right title"
+       
+     },
+     {
+       "type": "text",
+       "id":"right_title2",
+       "label":"right Title2"
+      
+    },
+    {
+     "type": "image_picker",
+     "id":"right_image",
+     "label":"right image"
+    
+  }
+        ]
+    }
+
+
+    {% endschema %}

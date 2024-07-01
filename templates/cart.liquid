@@ -1,0 +1,79 @@
+{% include "page-header",title:"cart" %}
+
+
+ <!-- Cart Start -->
+ <div class="container-fluid pt-5">
+   <form method="post">
+  <div class="row px-xl-5">
+      <div class="col-lg-8 table-responsive mb-5">
+          <table class="table table-bordered text-center mb-0">
+              <thead class="bg-secondary text-dark">
+                  <tr>
+                      <th>Products</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th>Remove</th>
+                  </tr>
+              </thead>
+              <tbody class="align-middle">
+
+                {% for line_item in cart.items%}
+                  <tr>
+                      <td class="align-middle"><img src="{{ line_item.image | product_img_url: width:2048}}" alt="" style="width: 50px;"> {{ line_item.title}}</td>
+                      <td class="align-middle"> {{line_item.final_price| money}}</td>
+                      <td class="align-middle">
+                          <div class="input-group quantity mx-auto" style="width: 100px;">
+                              
+                              <input type="number" name="update[]" min="0" pattern="[0-9]*" class="form-control form-control-sm bg-secondary text-center"  value="{{line_item.quantity}}">
+                              
+                          </div>
+                      </td>
+                      <td class="align-middle">{{line_item.line_price | money}}</td>
+                      <td class="align-middle"><a href="/cart/change?line={{ forloop.index}}&quantity=0" rel="{{line_item.id}}" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
+                  </tr>
+                  {% endfor%}
+                 
+              </tbody>
+          </table>
+      </div>
+      <div class="col-lg-4">
+          <form class="mb-5" action="">
+              <div class="input-group">
+                  <input type="text" class="form-control p-4" placeholder="Coupon Code">
+                  <div class="input-group-append">
+                      <button class="btn btn-primary">Apply Coupon</button>
+                  </div>
+              </div>
+          </form>
+          <div class="card border-secondary mb-5">
+              <div class="card-header bg-secondary border-0">
+                  <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+              </div>
+         
+<!--               <div class="card-body">
+                  <div class="d-flex justify-content-between mb-3 pt-1">
+                      <h6 class="font-weight-medium">Subtotal</h6>
+                      <h6 class="font-weight-medium">$150</h6>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                      <h6 class="font-weight-medium">Shipping</h6>
+                      <h6 class="font-weight-medium">$10</h6>
+                  </div>
+              </div> -->
+            
+              <div class="card-footer border-secondary bg-transparent">
+                  <div class="d-flex justify-content-between mt-2">
+                      <h5 class="font-weight-bold">Total</h5>
+                      <h5 class="font-weight-bold">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})
+                    </h5>
+                  </div>
+                  <input type="submit" name="checkout" class="btn btn-block btn-primary my-3 py-3" value="Proceed To Checkout">
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+</div>
+<!-- Cart End -->

@@ -1,0 +1,47 @@
+<!-- Vendor Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col">
+            
+            <div class="owl-carousel vendor-carousel">
+                {% for block in section.blocks%}
+                <div class="vendor-item border p-4">
+                    <img src="{{ block.settings.slider_image | img_url: "1920x" }}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Vendor End -->
+
+{% schema %}
+
+{
+    "name":"Vendor Carousel",
+    "settings":[
+    {
+        "type":"text",
+        "id":"something",
+        "label":"VendorSlider"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"image",
+        "name":"Vendor Slider",
+        "settings":[
+        {
+            "type":"image_picker",
+            "id":"slider_image",
+            "label":"Slider Image"
+        }
+        
+        ]
+    }
+    ]
+   
+}
+
+{% endschema %}
